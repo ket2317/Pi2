@@ -37,4 +37,18 @@ def Generos(request):
     return render(request, "generos.html", {'tag': i})
 
 def Perfil(request):
-    return render(request, "perfil.html")
+    post = task.objects.all()
+
+   
+    q = request.GET.get('q')
+    categoria = request.GET.get('categoria')
+
+  
+    if q:
+        post = post.filter(titulo__icontains=q)
+
+
+    if categoria:
+        post = post.filter(Category=categoria)
+
+    return render(request, "main.html", {'i': post})
