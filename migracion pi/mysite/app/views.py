@@ -35,3 +35,6 @@ def Post(request):
 def Generos(request):
     i = task.objects.all()
     return render(request, "generos.html", {'tag': i})
+
+def Perfil(request):
+    return render(request, "perfil.html")
