@@ -5,15 +5,15 @@ from .models import Post as task, Category
 def home(request):
     post = task.objects.all()
 
-    # 🔍 obtener filtros
+   
     q = request.GET.get('q')
     categoria = request.GET.get('categoria')
 
-    # filtro por texto (titulo)
+  
     if q:
         post = post.filter(titulo__icontains=q)
 
-    # filtro por categoría
+
     if categoria:
         post = post.filter(Category=categoria)
 
